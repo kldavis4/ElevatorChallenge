@@ -42,4 +42,28 @@ public class ElevatorControlSystemImpl implements ElevatorControlSystem {
         elevators.get(elevatorId).addNewDestination(destinationFloor); } 
     @Override 
 
-    public void monitor() {    //Go through all the elevators and determine their status    for (Elevator elevator : elevators){      //Determine which elevator is empty - if empty add a destination and if it's not empty take the appropriate actioon      switch (elevator.getStatus()){        case ELEVATOR_EMPTY:          if (!pickupLocations.isEmpty())            elevator.addNewDestination(pickupLocations.poll());          break;        // Loop through each occupied elevator and move them in the proper direction or ring an alarm if holding        case ELEVATOR_OCCUPIED:          switch (elevator.getDirection()){            case ELEVATOR_UP:              elevator.goUp();              break;            case ELEVATOR_DOWN:              elevator.goDown();              break;            case ELEVATOR_HOLDING:              elevator.ringAlarm();              break;          }      }    }  }}
+    public void monitor() {   
+        //Go through all the elevators and determine their status   
+        // for (Elevator elevator : elevators){     
+        // Determine which elevator is empty - if empty add a destination and if it's not empty take the appropriate actioon     
+        //  switch (elevator.getStatus()){       
+        //      case ELEVATOR_EMPTY:         
+        //          if (!pickupLocations.isEmpty())           
+        //              elevator.addNewDestination(pickupLocations.poll());         
+        //          break;       
+        // Loop through each occupied elevator and move them in the proper direction or ring an alarm if holding       
+        //      case ELEVATOR_OCCUPIED:         
+        //          switch (elevator.getDirection()){           
+        //              case ELEVATOR_UP:             
+        //                  elevator.goUp();             
+        //                  break;           
+        //              case ELEVATOR_DOWN:             
+        //                  elevator.goDown();             
+        //                  break;           
+        //              case ELEVATOR_HOLDING:             
+        //                  elevator.ringAlarm();             
+        //                  break;         
+        //          }     
+        // }   
+    }
+}
